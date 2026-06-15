@@ -16,7 +16,7 @@
             theme: { 
                 extend: { 
                     fontFamily: { 
-                        sans: ['"Century Gothic"', 'CenturyGothic', 'AppleGothic', 'sans-serif'], 
+                        sans: ['"Century Gothic"', 'CenturyGothic', 'Montserrat', 'AppleGothic', 'sans-serif'], 
                         serif: ['"Century Gothic"', 'CenturyGothic', 'AppleGothic', 'sans-serif'], 
                     }, 
                     colors: { 
@@ -34,8 +34,12 @@
     <style> 
         /* Global CSS Override for Century Gothic & clean scrolling */ 
         body, button, input, select, textarea, h1, h2, h3, h4, h5, h6, a, span, p, div { 
-            font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important; 
+            font-family: 'Century Gothic', CenturyGothic, 'Montserrat', AppleGothic, sans-serif !important; 
         } 
+
+        body {
+            -webkit-font-smoothing: antialiased;
+        }
 
         /* Global Scrollbar Customization */ 
         ::-webkit-scrollbar { 
@@ -73,6 +77,23 @@
             background: radial-gradient(circle 350px at var(--x, 50%) var(--y, 50%), rgba(242, 94, 29, 0.08), transparent 85%); 
             transition: background 0.05s ease; 
         } 
+
+        /* Premium Transitions & Timeline Animations */
+        .premium-transition {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .expand-grid {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .group:hover .expand-grid {
+            grid-template-rows: 1fr;
+            opacity: 1;
+        }
     </style> 
 </head> 
 <body class="bg-white text-slate-800 overflow-x-hidden min-h-screen flex flex-col"> 
@@ -81,8 +102,6 @@
     <header class="w-full bg-white/95 backdrop-blur-md border-b border-slate-100 sticky top-0 z-50"> 
         <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4"> 
              
-           
-
             <!-- Dashboard Selector Tabs --> 
             <nav class="flex flex-wrap justify-center bg-slate-50 p-1 rounded-xl border border-slate-100"> 
                 <button onclick="switchTab('tab-team')" id="btn-tab-team" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 bg-[#1E2BF3] text-white shadow-sm"> 
@@ -92,10 +111,7 @@
                     Menü Beispiel 
                 </button> 
                 <button onclick="switchTab('tab-placeholder3')" id="btn-tab-placeholder3" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 text-slate-500 hover:text-slate-900"> 
-                    3. Platzhalter 
-                </button> 
-                <button onclick="switchTab('tab-placeholder4')" id="btn-tab-placeholder4" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 text-slate-500 hover:text-slate-900"> 
-                    4. Platzhalter 
+                    Projektverlauf
                 </button> 
             </nav> 
 
@@ -106,7 +122,7 @@
     <main class="flex-grow w-full relative"> 
 
         <!-- ======================================================= --> 
-        <!-- ELEMENT 2: Teamseite --> 
+        <!-- ELEMENT 1: Teamseite --> 
         <!-- ======================================================= --> 
         <section id="tab-team" class="tab-content block min-h-[calc(100vh-73px)] relative bg-white text-slate-800 flex flex-col justify-between py-6"> 
              
@@ -140,7 +156,7 @@
                 </div> 
             </div> 
 
-            <!-- Controls Panel (Left info sentence removed) --> 
+            <!-- Controls Panel --> 
             <div class="max-w-7xl mx-auto w-full px-6 py-4 flex flex-col sm:flex-row justify-end items-center gap-4"> 
                 <div class="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end"> 
                     <div class="w-32 sm:w-48 h-1 bg-slate-100 rounded-full overflow-hidden relative"> 
@@ -192,7 +208,7 @@
             <!-- FLOATING OVAL PILL WITH GLASS EFFECT & ACTIVE UNDERLINE ACCENT --> 
             <div class="sticky top-[73px] w-full z-40 flex justify-center px-4 py-6 pointer-events-none transition-all duration-300"> 
                 <nav class="pointer-events-auto flex items-center bg-white/10 backdrop-blur-xl px-5 py-2 rounded-full border border-white/10 shadow-2xl shadow-black/50 relative gap-2"> 
-                    
+                     
                     <!-- Dynamic Sliding Underline Indicator --> 
                     <div id="nav-indicator" class="absolute bottom-1.5 h-[2px] bg-[#F25E1D] transition-all duration-300 ease-out z-0"></div> 
 
@@ -300,7 +316,7 @@
                                 <span class="text-slate-500 text-lg group-hover:text-white transition-colors">Visual Archive 2026</span> 
                             </div> 
                             <h4 class="text-sm font-bold text-white mt-4 group-hover:text-[#F25E1D] transition-colors">Minimalistisches Digital-Archiv</h4> 
-                            <p class="text-slate-500 text-[11px] uppercase mt-1">Design &amp; Entwicklung</p> 
+                            <p class="text-slate-505 text-[11px] uppercase mt-1">Design &amp; Entwicklung</p> 
                         </div> 
 
                         <!-- Project Block 2 --> 
@@ -310,7 +326,7 @@
                                 <span class="text-slate-500 text-lg group-hover:text-white transition-colors">Aether Brandspace</span> 
                             </div> 
                             <h4 class="text-sm font-bold text-white mt-4 group-hover:text-[#F25E1D] transition-colors">E-Commerce Brand Experience</h4> 
-                            <p class="text-slate-500 text-[11px] uppercase mt-1">Kreativdirektion</p> 
+                            <p class="text-slate-505 text-[11px] uppercase mt-1">Kreativdirektion</p> 
                         </div> 
                     </div> 
                 </section> 
@@ -364,55 +380,184 @@
         </section> 
 
         <!-- ======================================================= --> 
-        <!-- ELEMENT 3: BLANKO PLATZHALTER --> 
+        <!-- ELEMENT 3: PLATZHALTER -> JETZT: TIMELINE PROJEKTVERLAUF --> 
         <!-- ======================================================= --> 
-        <section id="tab-placeholder3" class="tab-content hidden min-h-[calc(100vh-73px)] relative bg-white text-slate-800 flex flex-col justify-between py-12"> 
+        <section id="tab-placeholder3" class="tab-content hidden min-h-[calc(100vh-73px)] relative bg-[#f8fafc] text-[#0f172a] flex flex-col justify-between py-24 px-4 sm:px-6"> 
              
-            <div class="max-w-4xl mx-auto w-full px-6 flex-grow flex flex-col justify-center items-center text-center"> 
-                <div class="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-[#1E2BF3] mb-6 text-xl shadow-sm"> 
-                    <i class="fa-solid fa-cubes-stacked"></i> 
-                </div> 
-                 
-                <span class="text-xs font-bold text-[#1E2BF3] uppercase tracking-widest bg-slate-50 px-3 py-1 rounded-full border border-slate-100">Element 3</span> 
-                <h2 class="text-3xl md:text-5xl font-black mt-4 text-slate-950">Platzhalter für drittes Modul</h2> 
-                <p class="text-slate-500 text-sm md:text-base mt-4 max-w-lg leading-relaxed"> 
-                    Dieses Element ist noch nicht definiert. Du kannst den HTML-Code hier einfügen, um deine dritte kreative Webseiten-Idee oder ein interaktives Design zu präsentieren. 
-                </p> 
-                 
-                <div class="mt-8 p-4 bg-slate-50 border border-slate-100 rounded-xl text-left font-mono text-[11px] text-slate-700 w-full max-w-md"> 
-                    <span class="text-slate-400">&lt;!-- Code hier einfügen --&gt;</span><br> 
-                    &lt;<span class="text-[#1E2BF3]">section</span> class="<span class="text-[#F25E1D]">my-element-3</span>"&gt;<br> 
-                    &nbsp;&nbsp;&lt;<span class="text-[#1E2BF3]">h1</span>&gt;Dein Element 3&lt;/<span class="text-[#1E2BF3]">h1</span>&gt;<br> 
-                    &lt;/<span class="text-[#1E2BF3]">section</span>&gt; 
-                </div> 
-            </div> 
+            <!-- TIMELINE MAIN VIEW -->
+            <div id="timeline-view" class="max-w-4xl mx-auto premium-transition opacity-100 w-full">
+                
+                <!-- Minimalistische, ruhige Überschrift -->
+                <div class="text-center mb-20">
+                    <span class="text-xs font-bold uppercase tracking-[0.25em] text-slate-400">Übersicht</span>
+                    <h1 class="text-2xl font-semibold text-slate-900 tracking-wider mt-2 mb-3 uppercase">Projektverlauf</h1>
+                    <div class="h-[1px] w-12 bg-slate-300 mx-auto"></div>
+                </div>
 
-        </section> 
+                <!-- Central Timeline Element -->
+                <div id="timeline-container" class="relative">
+                    
+                    <!-- Center Line Background -->
+                    <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-[3px] bg-slate-200"></div>
+                    
+                    <!-- Dynamic Progress Line -->
+                    <div id="progress-line" class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 w-[3px] bg-blue-600 transition-all duration-200 ease-out" style="height: 0%;"></div>
 
-        <!-- ======================================================= --> 
-        <!-- ELEMENT 4: BLANKO PLATZHALTER --> 
-        <!-- ======================================================= --> 
-        <section id="tab-placeholder4" class="tab-content hidden min-h-[calc(100vh-73px)] relative bg-white text-slate-800 flex flex-col justify-between py-12"> 
-             
-            <div class="max-w-4xl mx-auto w-full px-6 flex-grow flex flex-col justify-center items-center text-center"> 
-                <div class="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-[#73fc4b] mb-6 text-xl shadow-sm"> 
-                    <i class="fa-solid fa-laptop-code"></i> 
-                </div> 
-                 
-                <span class="text-xs font-bold text-[#73fc4b] uppercase tracking-widest bg-slate-50 px-3 py-1 rounded-full border border-slate-100">Element 4</span> 
-                <h2 class="text-3xl md:text-5xl font-black mt-4 text-slate-950">Platzhalter für viertes Modul</h2> 
-                <p class="text-slate-500 text-sm md:text-base mt-4 max-w-lg leading-relaxed"> 
-                    Dieses Element ist noch nicht definiert. Du kannst den HTML-Code hier einfügen, um deine vierte kreative Webseiten-Idee oder ein interaktives Design zu präsentieren. 
-                </p> 
-                 
-                <div class="mt-8 p-4 bg-slate-50 border border-slate-100 rounded-xl text-left font-mono text-[11px] text-slate-700 w-full max-w-md"> 
-                    <span class="text-slate-400">&lt;!-- Code hier einfügen --&gt;</span><br> 
-                    &lt;<span class="text-[#1E2BF3]">section</span> class="<span class="text-[#73fc4b]">my-element-4</span>"&gt;<br> 
-                    &nbsp;&nbsp;&lt;<span class="text-[#1E2BF3]">h1</span>&gt;Dein Element 4&lt;/<span class="text-[#1E2BF3]">h1</span>&gt;<br> 
-                    &lt;/<span class="text-[#73fc4b]">section</span>&gt; 
-                </div> 
-            </div> 
+                    <!-- PROJECT 1 (LINKS) -->
+                    <div class="timeline-item flex flex-col md:flex-row items-stretch justify-between mb-16 relative w-full group">
+                        <!-- Left Content Card -->
+                        <div class="w-full md:w-[45%] pl-10 md:pl-0 order-2 md:order-1">
+                            <div class="relative bg-white border border-slate-200 rounded-3xl p-6 shadow-sm premium-transition hover:shadow-md hover:border-slate-300 transform hover:-translate-y-1">
+                                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-slate-100 rounded-l-3xl group-hover:bg-blue-600 premium-transition"></div>
+                                
+                                <h3 class="text-sm font-bold text-slate-900 tracking-wider uppercase mb-4 pl-1">Datenkern-Architektur</h3>
+                                
+                                <div class="relative w-full aspect-[16/9] bg-slate-50 border border-slate-200/60 rounded-2xl overflow-hidden flex items-center justify-center premium-transition group-hover:border-slate-300">
+                                    <svg class="w-2/3 h-2/3 text-slate-300/80 group-hover:text-blue-500/30 transition-colors duration-500" viewBox="0 0 200 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="40" cy="56" r="6" stroke="currentColor" stroke-width="1.5" />
+                                        <circle cx="100" cy="26" r="6" stroke="currentColor" stroke-width="1.5" />
+                                        <circle cx="100" cy="86" r="6" stroke="currentColor" stroke-width="1.5" />
+                                        <circle cx="160" cy="56" r="6" stroke="currentColor" stroke-width="1.5" />
+                                        <line x1="46" y1="53" x2="94" y2="29" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" />
+                                        <line x1="46" y1="59" x2="94" y2="83" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" />
+                                        <line x1="106" y1="29" x2="154" y2="53" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" />
+                                        <line x1="106" y1="83" x2="154" y2="59" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" />
+                                        <line x1="100" y1="32" x2="100" y2="80" stroke="currentColor" stroke-width="1" />
+                                    </svg>
+                                </div>
 
+                                <div class="expand-grid">
+                                    <div class="overflow-hidden">
+                                        <div class="border-t border-slate-100 mt-4 pt-4 pl-1">
+                                            <p class="text-slate-500 text-xs leading-relaxed">
+                                                Die Implementierung einer neuen, robusten Systemarchitektur bildete das Fundament. Hierbei wurden alle Datenknotenpunkte redundant ausgelegt, um Datenverlusten präventiv vorzubeugen und gleichzeitig maximale Abfragegeschwindigkeiten zu garantieren.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-white border-[3px] border-slate-200 z-10 premium-transition top-8">
+                            <div class="w-1 h-1 bg-transparent rounded-full mx-auto my-auto mt-[3px] premium-transition dot-inner"></div>
+                        </div>
+
+                        <div class="hidden md:block w-[45%] order-1 md:order-2"></div>
+                    </div>
+
+                    <!-- PROJECT 2 (RECHTS) -->
+                    <div class="timeline-item flex flex-col md:flex-row items-stretch justify-between mb-16 relative w-full group">
+                        <div class="hidden md:block w-[45%]"></div>
+
+                        <div class="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-white border-[3px] border-slate-200 z-10 premium-transition top-8">
+                            <div class="w-1 h-1 bg-transparent rounded-full mx-auto my-auto mt-[3px] premium-transition dot-inner"></div>
+                        </div>
+
+                        <div class="w-full md:w-[45%] pl-10 md:pl-0">
+                            <div class="relative bg-white border border-slate-200 rounded-3xl p-6 shadow-sm premium-transition hover:shadow-md hover:border-slate-300 transform hover:-translate-y-1">
+                                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-slate-100 rounded-l-3xl group-hover:bg-blue-600 premium-transition"></div>
+
+                                <h3 class="text-sm font-bold text-slate-900 tracking-wider uppercase mb-4 pl-1">API-Integrationsschicht</h3>
+                                
+                                <div class="relative w-full aspect-[16/9] bg-slate-50 border border-slate-200/60 rounded-2xl overflow-hidden flex items-center justify-center premium-transition group-hover:border-slate-300">
+                                    <svg class="w-2/3 h-2/3 text-slate-300/80 group-hover:text-blue-500/30 transition-colors duration-500" viewBox="0 0 200 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 36H180" stroke="currentColor" stroke-width="1" />
+                                        <path d="M20 56H180" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" />
+                                        <path d="M20 76H180" stroke="currentColor" stroke-width="1" />
+                                        <rect x="50" y="26" width="20" height="20" rx="3" fill="#f8fafc" stroke="currentColor" stroke-width="1" />
+                                        <rect x="90" y="46" width="20" height="20" rx="3" fill="#f8fafc" stroke="currentColor" stroke-width="1" />
+                                        <rect x="130" y="66" width="20" height="20" rx="3" fill="#f8fafc" stroke="currentColor" stroke-width="1" />
+                                    </svg>
+                                </div>
+
+                                <div class="expand-grid">
+                                    <div class="overflow-hidden">
+                                        <div class="border-t border-slate-100 mt-4 pt-4 pl-1">
+                                            <p class="text-slate-500 text-xs leading-relaxed">
+                                                Zur reibungslosen Kommunikation mit Drittanbietern wurde ein hochperformantes API-Gateway implementiert. Dies ermöglicht eine strukturierte Datenverarbeitung in Echtzeit und bietet umfassende Validierungsmechanismen direkt am Einstiegspunkt.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 3 (LINKS) -->
+                    <div class="timeline-item flex flex-col md:flex-row items-stretch justify-between mb-16 relative w-full group">
+                        <div class="w-full md:w-[45%] pl-10 md:pl-0 order-2 md:order-1">
+                            <div class="relative bg-white border border-slate-200 rounded-3xl p-6 shadow-sm premium-transition hover:shadow-md hover:border-slate-300 transform hover:-translate-y-1">
+                                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-slate-100 rounded-l-3xl group-hover:bg-blue-600 premium-transition"></div>
+                                
+                                <h3 class="text-sm font-bold text-slate-900 tracking-wider uppercase mb-4 pl-1">Systemanalyse & Berichte</h3>
+                                
+                                <div class="relative w-full aspect-[16/9] bg-slate-50 border border-slate-200/60 rounded-2xl overflow-hidden flex items-center justify-center premium-transition group-hover:border-slate-300">
+                                    <svg class="w-2/3 h-2/3 text-slate-300/80 group-hover:text-blue-500/30 transition-colors duration-500" viewBox="0 0 200 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="100" cy="56" r="30" stroke="currentColor" stroke-width="1.2" />
+                                        <circle cx="100" cy="56" r="20" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 2" />
+                                        <line x1="100" y1="16" x2="100" y2="96" stroke="currentColor" stroke-width="0.8" />
+                                        <line x1="60" y1="56" x2="140" y2="56" stroke="currentColor" stroke-width="0.8" />
+                                        <path d="M65 85 L90 65 L115 75 L135 45" stroke="currentColor" stroke-width="1.5" />
+                                    </svg>
+                                </div>
+
+                                <div class="expand-grid">
+                                    <div class="overflow-hidden">
+                                        <div class="border-t border-slate-100 mt-4 pt-4 pl-1">
+                                            <p class="text-slate-500 text-xs leading-relaxed">
+                                                Dieses Modul beinhaltet die tiefergehende Auswertung aller Systemressourcen. Der integrierte, strukturierte Bericht liefert präzise Daten über Auslastungsgrenzen, Latenzstatistiken und Architekturkomponenten des gesamten Projektzyklus.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-white border-[3px] border-slate-200 z-10 premium-transition top-8">
+                            <div class="w-1 h-1 bg-transparent rounded-full mx-auto my-auto mt-[3px] premium-transition dot-inner"></div>
+                        </div>
+
+                        <div class="hidden md:block w-[45%] order-1 md:order-2"></div>
+                    </div>
+
+                    <!-- PROJECT 4 (RECHTS) -->
+                    <div class="timeline-item flex flex-col md:flex-row items-stretch justify-between mb-8 relative w-full group">
+                        <div class="hidden md:block w-[45%]"></div>
+
+                        <div class="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-white border-[3px] border-slate-200 z-10 premium-transition top-8">
+                            <div class="w-1 h-1 bg-transparent rounded-full mx-auto my-auto mt-[3px] premium-transition dot-inner"></div>
+                        </div>
+
+                        <div class="w-full md:w-[45%] pl-10 md:pl-0">
+                            <div class="relative bg-white border border-slate-200 rounded-3xl p-6 shadow-sm premium-transition hover:shadow-md hover:border-slate-300 transform hover:-translate-y-1">
+                                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-slate-100 rounded-l-3xl group-hover:bg-blue-600 premium-transition"></div>
+
+                                <h3 class="text-sm font-bold text-slate-900 tracking-wider uppercase mb-4 pl-1">Gesamtsystem-Freigabe</h3>
+                                
+                                <div class="relative w-full aspect-[16/9] bg-slate-50 border border-slate-200/60 rounded-2xl overflow-hidden flex items-center justify-center premium-transition group-hover:border-slate-300">
+                                    <svg class="w-2/3 h-2/3 text-slate-300/80 group-hover:text-blue-500/30 transition-colors duration-500" viewBox="0 0 200 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M100 20 L150 45 L150 85 L100 105 L50 85 L50 45 Z" stroke="currentColor" stroke-width="1" />
+                                        <path d="M100 20 L100 105" stroke="currentColor" stroke-width="1" />
+                                        <path d="M50 45 L100 68 L150 45" stroke="currentColor" stroke-width="1" />
+                                        <circle cx="100" cy="68" r="4" fill="currentColor" />
+                                    </svg>
+                                </div>
+
+                                <div class="expand-grid">
+                                    <div class="overflow-hidden">
+                                        <div class="border-t border-slate-100 mt-4 pt-4 pl-1">
+                                            <p class="text-slate-500 text-xs leading-relaxed">
+                                                Der finale Projektabschnitt umfasste ausgiebige Lasttests sowie eine detaillierte Code-Review durch externe Auditoren. Mit der erfolgreichen Abnahme wurde das System für den produktiven Betrieb freigegeben und nahtlos überführt.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </section> 
 
     </main> 
@@ -505,11 +650,14 @@
                 setTimeout(updateProgressBar, 100); 
             } else if (tabId === 'tab-werkstatt') { 
                 setTimeout(updateNavIndicator, 100); 
-            } 
+            } else if (tabId === 'tab-placeholder3') {
+                // Instantly recalculate timeline height on active tab selection
+                setTimeout(updateTimelineProgress, 100);
+            }
         } 
 
         // ======================================================= 
-        // ELEMENT 2: DYNAMIC TEAM CODE 
+        // ELEMENT 1: DYNAMIC TEAM CODE 
         // ======================================================= 
         const teamData = [ 
             { 
@@ -559,6 +707,7 @@
                     { name: "Three.js / Animations", value: 90 } 
                 ], 
                 location: "Hamburg, DE" 
+                // location translation omitted in original
             }, 
             { 
                 id: 4, 
@@ -699,7 +848,7 @@
 
         function renderTeam() { 
             teamTrack.innerHTML = ""; 
-            
+             
             teamData.forEach((member) => { 
                 const card = document.createElement("div"); 
                 card.className = `group relative w-64 md:w-72 h-[380px] rounded-2xl overflow-hidden bg-white border border-slate-100 hover:border-slate-200 flex-shrink-0 flex flex-col justify-between p-5 cursor-pointer shadow-md hover:${member.shadowColor} hover:shadow-xl transition-all duration-500 ease-out transform hover:-translate-y-1 select-none`; 
@@ -862,14 +1011,14 @@
 
         function animateTeam() { 
             currentX += (targetX - currentX) * lerpFactor; 
-            teamTrack.style.transform = `translateX(${currentX}px)`; 
+            if (teamTrack) teamTrack.style.transform = `translateX(${currentX}px)`; 
             updateProgressBar(); 
             requestAnimationFrame(animateTeam); 
         } 
 
 
         // ======================================================= 
-        // ELEMENT 1: WERKSTATT MENU & GLOW LOGIC 
+        // ELEMENT 2: WERKSTATT MENU & GLOW LOGIC 
         // ======================================================= 
         const light = document.getElementById('ambient-light'); 
         document.addEventListener('mousemove', (e) => { 
@@ -917,6 +1066,65 @@
                 updateNavIndicator(); 
             } 
         }); 
+
+
+        // ======================================================= 
+        // ELEMENT 3: TIMELINE / PROGRESS LINE LOGIC
+        // ======================================================= 
+        window.addEventListener('scroll', updateTimelineProgress);
+
+        function updateTimelineProgress() { 
+            // Berechnungen nur ausführen, wenn die Timeline-Sektion aktiv ist
+            if (document.getElementById("tab-placeholder3").classList.contains("hidden")) return;
+
+            const container = document.getElementById('timeline-container'); 
+            const progressLine = document.getElementById('progress-line'); 
+            const dots = document.querySelectorAll('.timeline-dot'); 
+
+            if (!container || !progressLine) return; 
+
+            const rect = container.getBoundingClientRect(); 
+            const viewportHeight = window.innerHeight; 
+
+            // Triggerpoint liegt in der Mitte des Bildschirms
+            const triggerPoint = viewportHeight / 2; 
+            const totalHeight = rect.height; 
+
+            // Distanz vom oberen Timeline-Rand zum Triggerpoint
+            const relativePosition = triggerPoint - rect.top; 
+
+            // In Prozent umrechnen und im Bereich von 0 bis 100 limitieren
+            let percentage = (relativePosition / totalHeight) * 100; 
+            percentage = Math.max(0, Math.min(100, percentage)); 
+
+            // Die blaue Progress-Line auf die berechnete Höhe anpassen
+            progressLine.style.height = `${percentage}%`; 
+
+            // Timeline-Dots visuell aktivieren, sobald die Scroll-Linie sie passiert
+            dots.forEach(dot => { 
+                const dotRect = dot.getBoundingClientRect(); 
+                const dotRelative = triggerPoint - dotRect.top; 
+                const dotInner = dot.querySelector('.dot-inner'); 
+                
+                if (dotRelative > 0) { 
+                    // Aktiver Zustand: Eleganter blauer Rand & gefüllter Innenpunkt
+                    dot.classList.add('border-blue-600'); 
+                    dot.classList.remove('border-slate-200'); 
+                    if (dotInner) { 
+                        dotInner.classList.add('bg-blue-600'); 
+                        dotInner.classList.remove('bg-transparent'); 
+                    } 
+                } else { 
+                    // Inaktiver Zustand: Subtiler grauer Rand & transparenter Innenpunkt
+                    dot.classList.remove('border-blue-600'); 
+                    dot.classList.add('border-slate-200'); 
+                    if (dotInner) { 
+                        dotInner.classList.remove('bg-blue-600'); 
+                        dotInner.classList.add('bg-transparent'); 
+                    } 
+                } 
+            }); 
+        } 
 
 
         // ======================================================= 
